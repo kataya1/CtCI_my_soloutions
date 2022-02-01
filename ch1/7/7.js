@@ -1,35 +1,38 @@
-// let binaryNumber = 0b101010 
-// let first:number = 123; // number 
-// let second: number = 0x37CF;  // hexadecimal
-// let third:number=0o377 ;      // octal
-// let fourth: number = 0b111001;// binary  
-// toExponential() 	Returns the exponential notation in string format.
-// toFixed() 	Returns the fixed-point notation in string format.
-// toPrecision() 	Returns the string representation in exponential or fixed-point to the specified precision.
-// toString() 	Returns the string representation of the number in the specified base.
-// valueOf() 	Returns the primitive value of the number. 
+"use strict";
 // N x N matrix, pixes have 4 bytes ( 32 bits )
 // var arr_name:datatype[][]=[ [val1,val2,val3],[v1,v2,v3] ]
-var img = [[0xff003322, 0xe5e5e5e5, 0xe3e3e3e3, 0x11111111, 0xffffffff],
+let img = [[0xff003322, 0xe5e5e5e5, 0xe3e3e3e3, 0x11111111, 0xffffffff],
     [0xff003322, 0xe5e5e5e5, 0xe3e3e3e3, 0x11111111, 0xffffffff],
     [0xff003322, 0xe5e5e5e5, 0xe3e3e3e3, 0x11111111, 0xffffffff],
     [0xff003322, 0xe5e5e5e5, 0xe3e3e3e3, 0x11111111, 0xffffffff],
     [0xff003322, 0xe5e5e5e5, 0xe3e3e3e3, 0x11111111, 0xffffffff]
 ];
-var img = [[1, 2, 3, 4, 5],
+let img2 = [[1, 2, 3, 4, 5],
     [6, 7, 8, 9, 10],
     [11, 12, 13, 14, 15],
     [16, 17, 18, 19, 20],
     [21, 22, 23, 24, 25]
 ];
-var rotate = function (m, deg) {
-    var img2 = m.map((arr) => arr.slice())
-    var n = m.length;
-    for (var i = 0; i < n; i++) {
-        for (var j = 0; j < n; j++) {
-            img2[j][n - i - 1] = m[i][j];
+let img3 = [[1, 2, 3, 4, 5],
+    [6, 7, 8, 9, 10]
+];
+const rotate = (m, deg = 'right') => {
+    let posx, posy;
+    if (!m[0])
+        return [];
+    let newImg = Array(m[1].length).fill(null).map((_) => Array(m.length).fill(0));
+    let length = m.length;
+    let width = m[0].length;
+    for (let i = 0; i < length; i++) {
+        for (let j = 0; j < width; j++) {
+            [posx, posy] = deg === 'right' ? [j, length - i - 1] : [width - 1 - j, i];
+            newImg[posx][posy] = m[i][j];
         }
     }
-    return img2;
+    return newImg;
 };
-console.log(rotate(img));
+// console.log(rotate(img))
+// console.log(rotate(img2))
+//this soloution can rotate N x M arrays left or right, O(NxM) space and time
+console.log(rotate(img3));
+console.log(rotate(img3, 'left'));
