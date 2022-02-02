@@ -40,6 +40,8 @@ const rotate = (m, deg = 'right') => {
     return newImg;
 };
 const rotateInPlace = (m) => {
+    if (m.length === 0 || m.length !== m[0].length)
+        return false;
     let n = m.length;
     let temp;
     for (let i = 0; i <= n / 2; i++) {

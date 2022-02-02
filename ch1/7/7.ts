@@ -40,7 +40,8 @@ const rotate =  ( m: matrix, deg: 'left' | 'right' = 'right'): matrix =>{
     return newImg
 }
 
-const rotateInPlace = (m: matrix): matrix =>{
+const rotateInPlace = (m: matrix): matrix | false =>{
+    if (m.length === 0 || m.length!== m[0].length) return false
     let n = m.length
     let temp: number;
     for (let i = 0; i<= n / 2; i++){
