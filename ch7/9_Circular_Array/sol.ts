@@ -25,10 +25,18 @@ class CircularArray<T>{
     pop(){
         this.arr.pop
     }
+    // iterator so for..of works 
+    *[Symbol.iterator] () {
+        for(let i = 0; i < this.size; i++)
+            yield this.at(i)
+ 
+
+
+      }
 }
 let ca = new CircularArray(['a', 'b', 'c', 'd', 'e'])
 // console.log(ca.at(0))
-// ca.rotateLeft()
+ca.rotateLeft()
 // console.log(ca.at(0))
 // ca.rotateLeft()
 // ca.rotateLeft()
@@ -37,3 +45,6 @@ let ca = new CircularArray(['a', 'b', 'c', 'd', 'e'])
 // ca.rotateRight()
 // console.log(ca.at(0))
 
+for( let l of ca){
+    console.log(l)
+}
