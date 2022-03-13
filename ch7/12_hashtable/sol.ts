@@ -57,7 +57,7 @@ class HashTable< K, V > {
         return 0
             
     }
-    get(key: K){
+    get(key: K): V{
         let loc = this.Resolve(key)
         let n = this.arr[loc]
         if( n === null) return undefined
@@ -76,7 +76,7 @@ class HashTable< K, V > {
         if( n === null)
             this.arr[loc] = new node(key, val)
         else{
-            
+            //  O( n) insertion 
             while(n.next !== null && n.key !== key)
                 n = n.next
             n.key === key ? n.value = val :  n.next = new node(key, val) 
@@ -84,7 +84,8 @@ class HashTable< K, V > {
         
     }
 }
-
+// now i know why i felt bad while coding this - the hashtable is an array of linkedlist
+// should have a linked list class that handles insertion, read, update, delete instead of this 
 
 let ht = new HashTable(26)
 ht.set('a', 12)
