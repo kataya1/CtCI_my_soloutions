@@ -16,6 +16,11 @@ class LLNode<V>{
     }
     public delete(){
         'a node can\'t delete itself it unless ina doubly linkedlist '
+        '**update** or a middle node'
+        if (this === null || this.next === null) return false
+        this.data = this.next.data
+        this.next = this.next.next
+        return true
     }
 }
 
