@@ -1,6 +1,6 @@
 import { table } from "console";
 
-class LLNode<V>{
+export class LLNode<V>{
     data: V;
     next: LLNode<V> | null = null
     constructor(d: V){
@@ -17,6 +17,7 @@ class LLNode<V>{
     public delete(){
         'a node can\'t delete itself it unless ina doubly linkedlist '
         '**update** or a middle node'
+        // O(1)
         if (this === null || this.next === null) return false
         this.data = this.next.data
         this.next = this.next.next
@@ -24,29 +25,36 @@ class LLNode<V>{
     }
 }
 
-class LinkedList<V>{
+export class LinkedList<V>{
     head: LLNode<V>| null;
     tail: LLNode<V>| null;
+    // we could make the nodesNumber a static variable inside node incremented when constructor is called
+    // but we can't have multi linkedlists with that. 
+    // a soloution would be to move the class decleration of node inside LinkedList 
     nodesNumber: number = 0; 
     constructor(){
         this.head = null
         this.tail = null
     }
     #init(nn: LLNode<V>){
-        this.head == nn
-        this.tail == nn
+        this.head = nn
+        this.tail = nn
         
     }
     enqueu(d: V){
         // O(1)
         let nn = new LLNode(d)
-        if(this.nodesNumber == 0){
+        if(this.nodesNumber == 0 || this.tail === null ){
             this.#init(nn)
         }else{
-            this.tail!.next = nn
+            this.tail.next = nn
             this.tail = nn
         }
         this.nodesNumber +=1
+        return this
+    }
+    dequeu(){
+        return this.pop()
     }
     insert(d: V, loc: number = 0){
         // O(N)
@@ -77,9 +85,10 @@ class LinkedList<V>{
         if(this.nodesNumber ===0) this.#init(nn)
         else{
             nn.next = this.head
-            this.head == nn
+            this.head = nn
         }
         this.nodesNumber++
+        return this  // we return this so we can have function chainging  ll.push(3).push(5)
     }
     last():V | null{
         // O(1)
@@ -108,5 +117,10 @@ class LinkedList<V>{
     at():number{
         //O(n)
         return -1
+    }
+    public printChain(node = this.head): string{
+        if( node === null) return ''
+        if (node.next === null) return `${node.data}`
+        return `${node.data} -> ` + this.printChain(node.next)
     }
 }
