@@ -40,9 +40,9 @@ console.log(isPalindrome(pali.head))  // true
 
 function reversLL(node: LLNode< any>){
     let prev = null
-    let temp;
+   
     while(node != null){
-        temp = node.next
+        let temp = node.next
         node.next = prev
         prev = node 
         node = temp
