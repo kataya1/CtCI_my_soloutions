@@ -1,25 +1,18 @@
-class Stack<T>{
-    #content: T[] = []
-
-    push(v: T): void{
-        this.#content.push(v)
-    }
-    pop(): T| undefined{
-        return this.#content.pop()
-    }
+class Stack<T> extends Array{
+    
     peek(): T| null{
-        let size =  this.#content.length
-        return size > 0 ? this.#content[ size - 1] : null 
+        let size =  this.length
+        return size > 0 ? this[ size - 1] : null 
     }
     isEmpty(){
-        return this.#content.length === 0 
+        return this.length === 0 
     }
 
     isFull(limit : number){
-        return this.#content.length === limit 
+        return this.length === limit 
     }
-    print(n: number = this.#content.length): string{
-        return `${this.#content}`
+    print(): string{
+        return `${this}`
     }
 }
 
