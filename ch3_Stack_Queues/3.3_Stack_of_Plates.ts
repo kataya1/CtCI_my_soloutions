@@ -51,6 +51,15 @@ class setOfStacks<T>{
            return this.#stacks[size - 1].pop()
        }
     }
+    popAt(index: number){
+        if ( this.#stacks.length === 0 ) return 
+        if (this.#stacks[index].isEmpty()){
+            this.#stacks.splice(index, 1)
+            this.popAt(index)
+        }
+        else
+            this.#stacks[index].pop()
+    }
     print(){
         let j = []
         for(let s of this.#stacks){
