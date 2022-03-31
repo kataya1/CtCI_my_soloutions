@@ -1,14 +1,4 @@
-class node<T>{
-    data: T;
-    adjacent: node<T>[];
-    constructor(d: T, adj: node<T>[] = []){
-        this.data = d
-        this.adjacent = adj
-    } 
-}
-class Graph<T>{
-    vertices: node<T>[]
-}
+
 class qnode<T>{
     data: T;
     next: qnode<T>| null = null;
