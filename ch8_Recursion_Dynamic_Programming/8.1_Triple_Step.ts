@@ -27,6 +27,10 @@ console.log( measureTime(()=>{ return NumOfPossibleSteps(100)}))
 
 
 function nops(steps: number, a: number = 1, b: number = 2, c: number = 4): number{
+    if (steps <= 0 ) return 0 
+    if (steps ==  1 ) return a
+    if (steps == 2) return b
+    if (steps == 3) return c 
     if ( steps  === 4) return a + b + c 
     return nops( steps -1 , b, c, a + b + c)
 }
