@@ -16,10 +16,7 @@ class Queenboard{
         return this.ways( this.len , 99)
     }
     ways(row: number, col: number , cells = this.cells): number{   
-        if ( row < 0 ){
-            return 0 
-        }
-        else{
+
             if ( this.canPlace(row,col,cells)){
                 cells[row] = col
                 if (row == 0){
@@ -34,7 +31,7 @@ class Queenboard{
                 return sum
             }
             return 0    
-        }
+        
 
         
     }
