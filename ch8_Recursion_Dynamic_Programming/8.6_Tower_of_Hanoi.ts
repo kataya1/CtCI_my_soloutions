@@ -74,3 +74,18 @@ let h = new Hanoi(4)
 
 h.solve()
 h.printSteps()
+
+
+// function solve(origin = [], destination = [], buffer = [], n = origin.length ){    
+//     if ( n == 0) return 
+//     // move n - 1 discs from thi given origin tower to middle( buffer ) using the tower named desination as buffer
+//     this.solve(  origin , buffer, destination, n - 1)
+//     destination.push(origin.pop())
+//     // then move the stack of n -1 discs from buffer(tower) to destination using the tower (origin) as buffer 
+//     this.solve( buffer, destination, origin , n - 1)
+// }
+// var start = [ 5, 4 , 3 , 2 , 1]
+// var mid = [ ] 
+// var end = [ ]
+// solve( start, end , mid)
+// console.log(end)
