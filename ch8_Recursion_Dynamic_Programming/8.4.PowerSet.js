@@ -19,3 +19,5 @@ function PowerSet(arr, index = arr.length - 1 , currentSet= [], ways = []){
 }
 
 console.log( PowerSet([1, 3, 4, 5]))
+
+
