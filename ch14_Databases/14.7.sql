@@ -1,0 +1,6 @@
+-- select max(students.name), grades.gpa 
+-- from students
+-- inner join grades
+-- on students.id = grades.Sid 
+-- group by grades.gpa
+-- having students.grade >= avg( (select gpa from grades sorted by gpa desc limit count( gap ) * 0.1))
