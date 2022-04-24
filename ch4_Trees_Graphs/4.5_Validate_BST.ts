@@ -9,7 +9,7 @@ interface validation {
     valid: boolean;
     invalidNodes?: biNode[];
 }
-class Tree {
+export class Tree {
     root: biNode;
     #validateBST(root: biNode): validation {
         if (root == null)
