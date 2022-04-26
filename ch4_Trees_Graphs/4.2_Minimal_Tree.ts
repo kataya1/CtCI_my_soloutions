@@ -20,7 +20,7 @@ class Binode{
     }
 }
 
-function makeBST(arr: number[], i = 0 , j = arr.length - 1){
+export function makeBST(arr: number[], i = 0 , j = arr.length - 1){
     if( j < i ) return null
     let mid = Math.ceil((i + j) / 2)
     let n = new Binode( arr[mid] )
@@ -30,7 +30,7 @@ function makeBST(arr: number[], i = 0 , j = arr.length - 1){
 }
 import {Tree} from './4.5_Validate_BST'
 
-let t = new Tree()
+(()=>{let t = new Tree()
 let arr1 = [1,2,3,4,5,6,7]
 let arr2 = [1,2,3,4,5,6]
 
@@ -38,4 +38,4 @@ let r1 = makeBST( arr1 )
 let r2 = makeBST( arr2 )
 r1.printInOrder()
 console.log(t.validateBST(r1))
-console.log(t.validateBST(r2))
+console.log(t.validateBST(r2))})

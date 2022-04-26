@@ -25,3 +25,16 @@ class Tree{
         return this.#gethight(node).balanced
     }
 }
+
+
+function isBalanced( n: nnode): boolean{
+    return checkBalance(n) != -1
+}
+
+function checkBalance( n: nnode): number{
+    if (n == null) return 0
+    let leftHeight = checkBalance( n.left)
+    let rightHeight = checkBalance(n.right)
+    if (leftHeight == -1 || rightHeight == -1 || Math.abs(leftHeight - rightHeight) > 1) return -1
+    else return Math.max(leftHeight, rightHeight)
+}

@@ -38,3 +38,15 @@ function listOfDepth<H>(root: TreeNode<H>){
         }
     }
 }
+
+function listOfDepth2<T>(n: TreeNode<T>, arr: linkedlist<T>[], depth = 0){
+    if( n == null) return arr
+    if( arr[depth]){
+        arr[depth].append(n.data)
+    }else{
+        arr[depth] = new linkedlist(n.data)
+    }
+    listOfDepth2(n.left, arr, depth + 1)
+    listOfDepth2(n.right, arr, depth + 1)
+    return arr
+}
