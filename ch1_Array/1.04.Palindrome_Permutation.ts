@@ -34,13 +34,13 @@ function checkPermutationOfPalindrome(s: string): boolean {
     }
     return false
 }
-console.log(checkPermutationOfPalindrome("caa"))
-console.log(checkPermutationOfPalindrome("aa"))
-console.log(checkPermutationOfPalindrome("azaz"))
-console.log(checkPermutationOfPalindrome("z"))
-console.log(checkPermutationOfPalindrome("zar"))
+// console.log(checkPermutationOfPalindrome("caa"))
+// console.log(checkPermutationOfPalindrome("aa"))
+// console.log(checkPermutationOfPalindrome("azaz"))
+// console.log(checkPermutationOfPalindrome("z"))
+// console.log(checkPermutationOfPalindrome("zar"))
 
-
+console.log(generateAllPerms("abcde"))
 
 // sort and check if there is one or none odd numbers
 

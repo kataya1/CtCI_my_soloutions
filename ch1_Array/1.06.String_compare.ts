@@ -27,24 +27,40 @@ const strComp = (s: string): string => {
 }
 let strcompAug29 = (s: string): string => {
     if (!s) return s
+    s = s.toLowerCase()
     let arr: string[] = []
     let current = s[0]
     let count = 0
     for (let c of s)
         [current, count] = scomp(c, current, arr, count)
     scomp("$$", current, arr, count)
-    return arr.length * 2 > s.length ? s : arr.join('')
+    return arr.length * 2 < s.length ? arr.join('') : s
 }
-function scomp(c: string, current: string, arr: string[], count) {
+function scomp(c: string, current: string, arr: string[], count: number): [string, number] {
     if (c == current)
         return [current, count + 1]
     else
         arr.push(`${current}${count}`)
-    return [c, 0]
+    return [c, 1]
 }
-console.log(strComp('aabcccccaaa'))
-console.log(strComp('abcada'))
-console.log(strComp('a'))
-console.log(strComp('bb'))
-console.log(strComp(''))
-console.log(strComp('AaAa'))
+
+function compress(str: string): string {
+    const compressed: string[] = [];
+    let count = 1;
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === str[i + 1]) {
+            count++;
+        } else {
+            compressed.push(str[i] + count);
+            count = 1;
+        }
+    }
+    return compressed.join("").length < str.length ? compressed.join("") : str;
+}
+
+console.log(compress('aabcccccaaa'))// a2b1c5a3
+console.log(compress('abcada'))// abcada
+console.log(compress('a'))// a
+console.log(compress('bb'))// b2
+console.log(compress(''))// 
+console.log(compress('AaAa'))// a4

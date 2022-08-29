@@ -42,5 +42,25 @@ function perms(str: string): string[] {
     }
     return result;
 }
+function arePermutations(str1: string, str2: string): boolean {
+    // If lengths are not equal, cannot be permutations
+    if (str1.length !== str2.length) return false;
 
-console.log(perms("dog").join("\n"));
+    // Store char counts in an object
+    const counts: { [key: string]: number } = {};
+    for (let char of str1) {
+        counts[char] = (counts[char] || 0) + 1;
+    }
+
+    // Check off characters in second string
+    for (let char of str2) {
+        if (!counts[char]) return false; // No more of this char left
+        counts[char]--;
+    }
+
+    return true;
+}
+console.log(arePermutations('dog', 'god'))
+console.log(arePermutations('dog', 'God'))
+console.log(arePermutations('dogg', 'doog'));
+console.log(arePermutations('dogg', 'duog'));
