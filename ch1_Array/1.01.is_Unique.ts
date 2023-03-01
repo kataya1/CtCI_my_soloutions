@@ -65,6 +65,8 @@ const hasUniqueChars4 = (s: string): boolean => {
 // console.log(hasUniqueChars3("abc")) //true
 // console.log(hasUniqueChars3("abcc")) //false
 // console.log(hasUniqueChars3("")) //true
+console.log(hasUniqueChars4("A!")) //true  but prints false
+console.log(hasUniqueChars4("4T")) //true but prints false  //on the same line on the ascii table
 
 
 
