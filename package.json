@@ -12,6 +12,8 @@
     "jest": "^27.4.7"
   },
   "dependencies": {
-    "@types/node": "^17.0.21"
+    "@types/node": "^17.0.21",
+    "g": "^2.0.1",
+    "ts-node": "^10.9.1"
   }
 }
