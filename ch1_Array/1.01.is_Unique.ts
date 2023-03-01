@@ -68,6 +68,23 @@ const hasUniqueChars4 = (s: string): boolean => {
 console.log(hasUniqueChars4("A!")) //true  but prints false
 console.log(hasUniqueChars4("4T")) //true but prints false  //on the same line on the ascii table
 
+// Solution to bit vector problem
+
+const hasUniqueChars5 = (s: string): boolean => {
+
+    let bitVector = 0n
+    for (let c of s) {
+        if (((1n << BigInt(c.charCodeAt(0))) & bitVector) > 0n)
+            return false
+        bitVector = bitVector | (1n << BigInt(c.charCodeAt(0)))
+    }
+    return true
+}
 
 
-
+console.log(hasUniqueChars5("abc")) //true
+console.log(hasUniqueChars5("abcc")) //false
+console.log(hasUniqueChars5("arstd hneio12#34%5")) //true but prints false
+console.log(hasUniqueChars5("A!")) //true  but prints false
+console.log(hasUniqueChars5("4T")) //true but prints false  //on the same line on the ascii table
+console.log(hasUniqueChars5("")) //true
