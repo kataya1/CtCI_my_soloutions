@@ -43,4 +43,9 @@ function perms(str: string): string[] {
     return result;
 }
 
+function checkPermutation(str1, str2) {
+  const permsarray = perms(str1);
+  return permsarray.some(perm => perm === str2); 
+}
+
 console.log(perms("dog").join("\n"));
