@@ -49,15 +49,15 @@ console.log(1 << 30) // 1073741824
 console.log(1 << 31) // -2147483648
 console.log(1 << 32) // 1   mening 0 and 32 is equivelant
 console.log(1 << 33) // 2
+
 const hasUniqueChars4 = (s: string): boolean => {
-    // Won't work because JavaScript Uses 32 bits Bitwise Operands
+    // Won't work because JavaScript Uses 32 bits Bitwise Operands e.g. "4T" returns false
     let bitVector = 0
     for (let c of s) {
-        bitVector
-        if ((1 << c.charCodeAt(0) & bitVector) > 0)
+        let val = 1 << c.charCodeAt(0)
+        if ((val & bitVector) > 0)
             return false
-
-        bitVector = bitVector | (1 << c.charCodeAt(0))
+        bitVector |= val
     }
     return true
 }
@@ -82,9 +82,6 @@ const hasUniqueChars5 = (s: string): boolean => {
 }
 
 
-console.log(hasUniqueChars5("abc")) //true
-console.log(hasUniqueChars5("abcc")) //false
-console.log(hasUniqueChars5("arstd hneio12#34%5")) //true but prints false
-console.log(hasUniqueChars5("A!")) //true  but prints false
-console.log(hasUniqueChars5("4T")) //true but prints false  //on the same line on the ascii table
-console.log(hasUniqueChars5("")) //true
+console.log(hasUniqueChars5("A!")) //true 
+console.log(hasUniqueChars5("4T")) //true
+console.log(hasUniqueChars5("@`")) //?? needs checking
